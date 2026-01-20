@@ -1,4 +1,4 @@
-# PXE-Helper-Scripts
+PXE-Helper-Scripts
 
 bash -c "$(curl -fsSL https://raw.githubusercontent.com/lenne0815/PXE-Helper-Scripts/refs/heads/main/Iventoy.sh)"
 
@@ -14,11 +14,11 @@ mv /tmp/iventoy*/* /opt/iventoy/
 
 rm -rf iventoy*.tar.gz
 
-# 1. Define helper functions (if they aren't already in your system)
+1. Define helper functions (if they aren't already in your system)
 msg_info() { echo -e "\e[34m[INFO]\e[0m $1"; }
 msg_ok() { echo -e "\e[32m[OK]\e[0m $1"; }
 
-# 2. Create the service file (Requires sudo)
+2. Create the service file (Requires sudo)
 sudo bash -c 'cat <<EOF >/etc/systemd/system/iventoy.service
 [Unit]
 Description=iVentoy PXE Booter
@@ -39,7 +39,7 @@ Restart=on-failure
 WantedBy=multi-user.target
 EOF'
 
-# 3. Enable and start the service
+3. Enable and start the service
 msg_info "Creating Service"
 sudo systemctl daemon-reload
 sudo systemctl enable -q --now iventoy
